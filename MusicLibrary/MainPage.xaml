@@ -58,8 +58,7 @@
                                 <TextBlock Text="{x:Bind category}"  FontSize="18" Margin="10,10,10,0"/>
                             </StackPanel>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                    
+                    </ListView.ItemTemplate>               
 
                 </ListView>
             </SplitView.Pane>
@@ -73,10 +72,18 @@
                                Name ="MenuText" 
                                Text="AllMusic"
                                FontSize="24"/>
+                    <MediaElement Name="MusicMedia" AutoPlay="True"/>
                     <GridView Grid.Row="1" 
                               Name = "MusicGridView" 
                               IsItemClickEnabled="True"
-                             ItemClick="MusicGridView_ItemClick" />
+                              ItemsSource="{x:Bind Songs}"
+                             ItemClick="MusicGridView_ItemClick">
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Music">
+                                <Image Name ="MusicImage" Height="112" Width="101" Source="{x:Bind ImageFile}"/>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
                 </Grid>
             </SplitView.Content>
             

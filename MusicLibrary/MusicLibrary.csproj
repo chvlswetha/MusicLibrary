@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\Music.cs" />
+    <Compile Include="Model\MusicManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,31 +133,43 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Audio\HipHop\Holizna.wav" />
-    <Content Include="Assets\Audio\HipHop\Makaih.wav" />
-    <Content Include="Assets\Audio\Kpop\IceCream.wav" />
-    <Content Include="Assets\Audio\Kpop\YetToCome.wav" />
-    <Content Include="Assets\Audio\RnB\Better.wav" />
-    <Content Include="Assets\Audio\RnB\Vibin.wav" />
-    <Content Include="Assets\Audio\RocknRoll\Kinks.wav" />
-    <Content Include="Assets\Audio\RocknRoll\RollingStone.wav" />
+    <Content Include="Assets\Audio\Favorites\Kinks.wav" />
+    <Content Include="Assets\Audio\Favorites\Makaih.wav" />
+    <Content Include="Assets\Audio\Genre\HipHop\Holizna.wav" />
+    <Content Include="Assets\Audio\Genre\HipHop\Makaih.wav" />
+    <Content Include="Assets\Audio\Genre\Kpop\IceCream.wav" />
+    <Content Include="Assets\Audio\Genre\Kpop\YetToCome.wav" />
+    <Content Include="Assets\Audio\Genre\RnB\Better.wav" />
+    <Content Include="Assets\Audio\Genre\RnB\Vibin.wav" />
+    <Content Include="Assets\Audio\Genre\RocknRoll\Kinks.wav" />
+    <Content Include="Assets\Audio\Genre\RocknRoll\RollingStone.wav" />
     <Content Include="Assets\Category\HipHop.png" />
     <Content Include="Assets\Category\Kpop.png" />
     <Content Include="Assets\Category\RnB.png" />
     <Content Include="Assets\Category\RocknRoll.png" />
+    <Content Include="Assets\Images\Favorites\Kinks.png" />
+    <Content Include="Assets\Images\Favorites\Makaih.png" />
+    <Content Include="Assets\Images\Genre\HipHop.png" />
+    <Content Include="Assets\Images\Genre\Kpop.png" />
+    <Content Include="Assets\Images\Genre\RnB.png" />
+    <Content Include="Assets\Images\Genre\RocknRoll.png" />
+    <Content Include="Assets\Images\Genre\RocknRoll\Kinks.png" />
+    <Content Include="Assets\Images\Genre\RocknRoll\RollingStone.png" />
+    <Content Include="Assets\Images\More\googleplay.png" />
+    <Content Include="Assets\Images\More\pandora.png" />
+    <Content Include="Assets\Images\More\spotify.png" />
+    <Content Include="Assets\Images\More\youtube.png" />
     <Content Include="Assets\Images\home.png" />
     <Content Include="Assets\Icons\Favorites.png" />
     <Content Include="Assets\Icons\Genres.png" />
     <Content Include="Assets\Icons\More.png" />
     <Content Include="Assets\Icons\Recently.png" />
-    <Content Include="Assets\Images\HipHop\Holizna.png" />
-    <Content Include="Assets\Images\HipHop\Makai.png" />
-    <Content Include="Assets\Images\Kpop\IceCream.png" />
-    <Content Include="Assets\Images\Kpop\YetToCome.png" />
-    <Content Include="Assets\Images\RnB\Better.png" />
-    <Content Include="Assets\Images\RnB\Vibin.png" />
-    <Content Include="Assets\Images\RocknRoll\Kinks.jpg" />
-    <Content Include="Assets\Images\RocknRoll\RollingStone.jpg" />
+    <Content Include="Assets\Images\Genre\HipHop\Holizna.png" />
+    <Content Include="Assets\Images\Genre\HipHop\Makaih.png" />
+    <Content Include="Assets\Images\Genre\Kpop\IceCream.png" />
+    <Content Include="Assets\Images\Genre\Kpop\YetToCome.png" />
+    <Content Include="Assets\Images\Genre\RnB\Better.png" />
+    <Content Include="Assets\Images\Genre\RnB\Vibin.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -181,6 +194,7 @@
       <Version>6.2.12</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
