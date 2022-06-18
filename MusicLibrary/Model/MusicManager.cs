@@ -15,8 +15,8 @@ namespace MusicLibrary.Model
             var songs = new List<Music>();
             songs.Add(new Music("Holizna", MusicGenre.HipHop));
             songs.Add(new Music("Makaih", MusicGenre.HipHop));
-            songs.Add(new Music("Ice Cream", MusicGenre.Kpop));
-            songs.Add(new Music("Yet To Come", MusicGenre.Kpop));
+            songs.Add(new Music("IceCream", MusicGenre.Kpop));
+            songs.Add(new Music("YetToCome", MusicGenre.Kpop));
             songs.Add(new Music("Better", MusicGenre.RnB));
             songs.Add(new Music("Vibin", MusicGenre.RnB));
             songs.Add(new Music("Kinks", MusicGenre.RocknRoll));

@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\Music.cs" />
+    <Compile Include="Model\MusicManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
