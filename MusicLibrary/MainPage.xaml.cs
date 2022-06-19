@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using MusicLibrary.Model;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -24,10 +25,15 @@ namespace MusicLibrary
     public sealed partial class MainPage : Page
     {
 
-       private List<MenuItem> MenuItems;
+        private List<MenuItem> MenuItems;
+        private ObservableCollection<Music> Songs;
         public MainPage()
         {
             this.InitializeComponent();
+
+            Songs = new ObservableCollection<Music>();
+            MusicManager.GetAllMusic(Songs);
+
             MenuItems = new List<MenuItem>();
 
             MenuItems.Add(new MenuItem
@@ -54,12 +60,34 @@ namespace MusicLibrary
 
         private void MenuitemsListView_ItemClick(object sender, ItemClickEventArgs e)
         {
+            var menuItem = (MenuItem)e.ClickedItem;
+            MenuText.Text = menuItem.category.ToString();
+            if (MenuText.Text == "Favorites")
+                MusicManager.GetFavorites(Songs);
 
+            if (MenuText.Text == "Genre")
+                MusicManager.GetAllGenres(Songs);
+
+            if (MenuText.Text == "More")
+                MusicManager.GetRecently(Songs);
+
+            if (MenuText.Text == "More")
+                MusicManager.GetMoreApps(Songs);
         }
 
         private void MusicGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+            var musicItem = (Music)e.ClickedItem;
+
+            if (musicItem.Name.ToString() == MusicGenre.HipHop.ToString() ||
+                musicItem.Name.ToString() == MusicGenre.Kpop.ToString() ||
+                musicItem.Name.ToString() == MusicGenre.RnB.ToString() ||
+                    musicItem.Name.ToString() == MusicGenre.RocknRoll.ToString())
+            {
+                MusicManager.GetAllMusicByGenre(Songs, musicItem.Name.ToString());
+            }
+            MusicMedia.Source = new Uri(this.BaseUri, musicItem.AudioFile);
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
@@ -73,3 +101,4 @@ namespace MusicLibrary
         }
     }
 }
+

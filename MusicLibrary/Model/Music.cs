@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MusicLibrary.Model
 {
-   public enum MusicCategory
+    public enum MusicCategory
     {
         Genre,
         Favorites,
@@ -25,6 +25,7 @@ namespace MusicLibrary.Model
     {
         public string Name { get; set; }
         public MusicCategory Category { get; set; }
+        public MusicGenre Genre { get; set; }
         public string AudioFile { get; set; }
         public string ImageFile { get; set; }
 
@@ -32,17 +33,26 @@ namespace MusicLibrary.Model
         {
             Name = name;
             Category = category;
-
-              ImageFile = $"/Assets/Images/{category}/{name}.png";
-              if (Category !=  MusicCategory.More)
-              AudioFile = $"/Assets/Audio/{category}/{name}.wav";
-       }
-        public Music(string name,  MusicGenre genre)
+            if (Category == MusicCategory.Genre)
+            {
+                ImageFile = $"/Assets/Images/{Category}/{name}.png";
+                AudioFile = $"/Assets/Audio/{Category}/{name}.wav";
+            }
+            else
+            {
+                ImageFile = $"/Assets/Images/{category}/{name}.png";
+                if (Category != MusicCategory.More)
+                    AudioFile = $"/Assets/Audio/{category}/{name}.wav";
+            }
+        }
+        public Music(string name, MusicGenre genre)
         {
-              Name = name;
-              Category = MusicCategory.Genre;
-             ImageFile = $"/Assets/Images/{Category}/{genre}/{name}.png";
-             AudioFile = $"/Assets/Audio/{Category}/{genre}/{name}.wav";
-         }
-     }
+            Name = name;
+            Category = MusicCategory.Genre;
+            Genre = genre;
+            ImageFile = $"/Assets/Images/{Category}/{genre}/{name}.png";
+            AudioFile = $"/Assets/Audio/{Category}/{genre}/{name}.wav";
+
+        }
+    }
 }

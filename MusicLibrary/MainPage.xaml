@@ -34,11 +34,10 @@
                     Width="55"/>
             <TextBlock x:Name="MusicLibraryText" 
                    RelativePanel.AlignHorizontalCenterWithPanel="True" 
-                   Text="Music Library" 
-                   FontFamily="Georgia"
+                   Text="Music Library"  
                    FontSize="45"
                    FontWeight="Normal"
-                   TextAlignment="Center" Width="680">                
+                   TextAlignment="Center" Width="680">
             </TextBlock>
         </RelativePanel>
         <SplitView Grid.Row="1" 
@@ -60,7 +59,6 @@
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                    
 
                 </ListView>
             </SplitView.Pane>
@@ -72,22 +70,23 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" 
                                Name ="MenuText" 
-                               Text="All Songs"
-                               FontFamily="Georgia"
+                               Text="AllMusic"
                                FontSize="24"/>
+                    <MediaElement Name="MusicMedia" AutoPlay="True"/>
                     <GridView Grid.Row="1" 
                               Name = "MusicGridView" 
-                              ItemsSource="{x:Bind songs}"
                               IsItemClickEnabled="True"
-                              ItemClick="MusicGridView_ItemClick" />
-                    <GridView.ItemTemplate>
-                        <DataTemplate x:DataType="data:song">
-                            <Image Name="SongImage" Height="112" Width="101" Source="{x:Bind ImageFile}"
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
+                              ItemsSource="{x:Bind Songs}"
+                             ItemClick="MusicGridView_ItemClick">
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Music">
+                                <Image Name ="MusicImage" Height="112" Width="101" Source="{x:Bind ImageFile}"/>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
                 </Grid>
             </SplitView.Content>
-            
+
         </SplitView>
     </Grid>
 </Page>
