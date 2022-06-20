@@ -97,6 +97,9 @@ namespace MusicLibrary
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            MusicManager.GetAllMusic(Songs);
+            MenuText.Text = "All Music";
+            MenuitemsListView.SelectedItem = null;
 
         }
     }

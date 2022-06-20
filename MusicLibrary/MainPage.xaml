@@ -70,7 +70,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" 
                                Name ="MenuText" 
-                               Text="AllMusic"
+                               Text="All Music"
                                FontSize="24"/>
                     <MediaElement Name="MusicMedia" AutoPlay="True"/>
                     <GridView Grid.Row="1" 

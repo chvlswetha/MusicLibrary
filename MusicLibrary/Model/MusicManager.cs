@@ -49,7 +49,7 @@ namespace MusicLibrary.Model
         }
 
         //Getting all music by Genre - Done
-        public static void GetAllMusicByGenre(ObservableCollection<Music> songs, String genre)  //Datarefresh everytime with observablecollection
+        public static void GetAllMusicByGenre(ObservableCollection<Music> songs, string genre)  //Datarefresh everytime with observablecollection
         {
             var allsongs = getMusic();
             //where (var sound in allsounds) filter by category
