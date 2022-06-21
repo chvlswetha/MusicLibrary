@@ -11,7 +11,6 @@ namespace MusicLibrary.Model
         public string Name { get; set; }
         public string ImageFile { get; set; }
         public string ExtURL { get; set; }
-
         public ExtLinks(String name)
         {
             Name = name;

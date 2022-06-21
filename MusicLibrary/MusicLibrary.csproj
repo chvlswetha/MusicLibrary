@@ -156,10 +156,10 @@
     <Content Include="Assets\Images\Genre\RocknRoll.png" />
     <Content Include="Assets\Images\Genre\RocknRoll\Kinks.png" />
     <Content Include="Assets\Images\Genre\RocknRoll\RollingStone.png" />
+    <Content Include="Assets\Images\home.png" />
     <Content Include="Assets\Images\More\pandora.png" />
     <Content Include="Assets\Images\More\spotify.png" />
     <Content Include="Assets\Images\More\youtube.png" />
-    <Content Include="Assets\Images\home.png" />
     <Content Include="Assets\Icons\Favorites.png" />
     <Content Include="Assets\Icons\Genres.png" />
     <Content Include="Assets\Icons\More.png" />
