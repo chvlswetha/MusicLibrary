@@ -122,6 +122,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ExtLinks.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\Music.cs" />
     <Compile Include="Model\MusicManager.cs" />
@@ -166,7 +167,6 @@
     <Content Include="Assets\Images\Genre\RocknRoll\Kinks.png" />
     <Content Include="Assets\Images\Genre\RocknRoll\RollingStone.png" />
     <Content Include="Assets\Images\home.png" />
-    <Content Include="Assets\Images\More\googleplay.png" />
     <Content Include="Assets\Images\More\pandora.png" />
     <Content Include="Assets\Images\More\spotify.png" />
     <Content Include="Assets\Images\More\youtube.png" />
