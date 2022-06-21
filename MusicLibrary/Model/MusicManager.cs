@@ -64,11 +64,18 @@ namespace MusicLibrary.Model
 
         }
 
-        public static void GetFavorites(ObservableCollection<Music> songs)  //Getting Favorites - To Do
+        
+     
+        //Getting Favorites 
+        public static void GetFavorites(ObservableCollection<Music> songs)  //Getting favorites
         {
+            var allFavorites = new List<Music>();
+            allFavorites.Add(new Music("Kinks", MusicCategory.Favorites));
+            allFavorites.Add(new Music("Makaih", MusicCategory.Favorites));
             songs.Clear();
-            //Favorites to be added
+            allFavorites.ForEach(song => songs.Add(song));
         }
+    
 
         public static void GetRecently(ObservableCollection<Music> songs)  //Getting Recent - To Do
         {
