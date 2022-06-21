@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Documents;
 
 namespace MusicLibrary.Model
 {
@@ -27,6 +28,8 @@ namespace MusicLibrary.Model
         public MusicCategory Category { get; set; }
         public MusicGenre Genre { get; set; }
         public string AudioFile { get; set; }
+
+
         public string ImageFile { get; set; }
 
         public Music(string name, MusicCategory category)
@@ -34,15 +37,14 @@ namespace MusicLibrary.Model
             Name = name;
             Category = category;
              if (Category ==  MusicCategory.Genre)
-            {
              ImageFile = $"/Assets/Images/{Category}/{name}.png";
-             AudioFile = $"/Assets/Audio/{Category}/{name}.wav";
-            }
-    else{
+            
+           else
+            {
               ImageFile = $"/Assets/Images/{category}/{name}.png";
-              if (Category !=  MusicCategory.More)
               AudioFile = $"/Assets/Audio/{category}/{name}.wav";
-        }
+            }
+            
        }
         public Music(string name, MusicGenre genre)
         {
@@ -51,7 +53,7 @@ namespace MusicLibrary.Model
                 Genre= genre;
                 ImageFile = $"/Assets/Images/{Category}/{genre}/{name}.png";
                 AudioFile = $"/Assets/Audio/{Category}/{genre}/{name}.wav";
-            
         }
+
     }
 }

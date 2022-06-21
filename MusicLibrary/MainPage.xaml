@@ -66,27 +66,47 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="9*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" 
                                Name ="MenuText" 
                                Text="AllMusic"
                                FontSize="24"/>
-                    <MediaElement Name="MusicMedia" AutoPlay="True"/>
+                    <MediaElement Name="MusicMedia" AutoPlay="True" />
                     <GridView Grid.Row="1" 
                               Name = "MusicGridView" 
                               IsItemClickEnabled="True"
                               ItemsSource="{x:Bind Songs}"
-                             ItemClick="MusicGridView_ItemClick">
-                        <GridView.ItemTemplate>
+                             ItemClick="MusicGridView_ItemClick">                       
+                        <GridView.ItemTemplate>                            
                             <DataTemplate x:DataType="data:Music">
-                                <Image Name ="MusicImage" Height="112" Width="101" Source="{x:Bind ImageFile}"/>
+                                <StackPanel Orientation="Vertical">
+                                    <Image Name ="MusicImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
+                                    <TextBlock Text="{x:Bind Name}" TextAlignment="Center"/>
+                               </StackPanel>
+                            </DataTemplate>                           
+                        </GridView.ItemTemplate>
+                    </GridView>
+
+                    <GridView Grid.Row="2" 
+                              Name = "ExtLinksGridView" 
+                              IsItemClickEnabled="True"
+                              ItemsSource="{x:Bind MoreLinks}"
+                             ItemClick="ExtLinksGridView_ItemClick">
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="data:ExtLinks">
+                                <StackPanel Orientation="Vertical">
+                                    <HyperlinkButton NavigateUri="{x:Bind ExtURL}">
+                                    <Image Name ="ExtLinksImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
+                                   </HyperlinkButton>
+                                    <TextBlock Text="{x:Bind Name}" TextAlignment="Center" />
+                                </StackPanel>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
                 </Grid>
-            </SplitView.Content>
-            
+            </SplitView.Content>            
         </SplitView>
     </Grid>
 </Page>

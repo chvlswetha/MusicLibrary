@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ExtLinks.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -155,7 +156,6 @@
     <Content Include="Assets\Images\Genre\RocknRoll.png" />
     <Content Include="Assets\Images\Genre\RocknRoll\Kinks.png" />
     <Content Include="Assets\Images\Genre\RocknRoll\RollingStone.png" />
-    <Content Include="Assets\Images\More\googleplay.png" />
     <Content Include="Assets\Images\More\pandora.png" />
     <Content Include="Assets\Images\More\spotify.png" />
     <Content Include="Assets\Images\More\youtube.png" />
@@ -194,7 +194,10 @@
       <Version>6.2.12</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets\Audio\Recently\" />
+    <Folder Include="Assets\Images\Recently\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

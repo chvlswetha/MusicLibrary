@@ -73,19 +73,18 @@ namespace MusicLibrary.Model
         public static void GetRecently(ObservableCollection<Music> songs)  //Getting Recent - To Do
         {
             songs.Clear();
-            //Recent playlist to be added
         }
 
 
-        public static void GetMoreApps(ObservableCollection<Music> songs)  //Getting All songs - In Progress
+        public static void GetMoreApps(ObservableCollection<ExtLinks> links)  //Getting All songs - In Progress
         {
-            var MoreApps = new List<Music>();
-            MoreApps.Add(new Music("googleplay", MusicCategory.More));
-            MoreApps.Add(new Music("pandora", MusicCategory.More));
-            MoreApps.Add(new Music("spotify", MusicCategory.More));
-            MoreApps.Add(new Music("youtube", MusicCategory.More));
-            songs.Clear();
-            MoreApps.ForEach(song => songs.Add(song));
+             var MoreApps = new List<ExtLinks>();
+               MoreApps.Add(new ExtLinks("pandora"));
+               MoreApps.Add(new ExtLinks("spotify"));
+               MoreApps.Add(new ExtLinks("youtube"));
+               links.Clear();
+               MoreApps.ForEach(link => links.Add(link));           
+
         }
 
     }
