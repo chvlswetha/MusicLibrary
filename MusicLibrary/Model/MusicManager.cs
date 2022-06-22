@@ -63,8 +63,7 @@ namespace MusicLibrary.Model
             filteredsongs.ForEach(song => songs.Add(song));  //LAMBDA statement
 
         }
-
-        
+             
      
         //Getting Favorites 
         public static void GetFavorites(ObservableCollection<Music> songs)  //Getting favorites
@@ -75,16 +74,7 @@ namespace MusicLibrary.Model
             songs.Clear();
             allFavorites.ForEach(song => songs.Add(song));
         }
-    
-
-        public static void GetRecently(ObservableCollection<Music> songs)  //Getting Recent - To Do
-        {
-            songs.Clear();
-            //Recent playlist to be added
-        }
-
-
-        public static void GetMoreApps(ObservableCollection<ExtLinks> links)  //Getting External links-Done
+       public static void GetMoreApps(ObservableCollection<ExtLinks> links)  //Getting External links-Done
         {
             var MoreApps = new List<ExtLinks>();
             MoreApps.Add(new ExtLinks("Pandora"));

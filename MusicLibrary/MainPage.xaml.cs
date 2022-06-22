@@ -28,6 +28,9 @@ namespace MusicLibrary
         private List<MenuItem> MenuItems;
         private ObservableCollection<Music> Songs;
         private ObservableCollection<ExtLinks> MoreLinks;
+
+      //  public List<Music> allRecent;
+        
         public MainPage()
         {
             this.InitializeComponent();
@@ -35,11 +38,14 @@ namespace MusicLibrary
             Songs = new ObservableCollection<Music>();
             MusicManager.GetAllMusic(Songs);
 
+           // allRecent = new List<Music>();
+
             MoreLinks = new ObservableCollection<ExtLinks>();
             MusicManager.GetMoreApps(MoreLinks);
 
             MusicGridView.Visibility = Visibility.Visible;
             ExtLinksGridView.Visibility = Visibility.Collapsed;
+            MusicMedia.Stop();
 
             MenuItems = new List<MenuItem>();
 
@@ -74,6 +80,8 @@ namespace MusicLibrary
             MenuText.Text = menuItem.category.ToString();
             MusicGridView.Visibility = Visibility.Visible;
             ExtLinksGridView.Visibility = Visibility.Collapsed;
+            MusicMedia.Stop();
+
 
             if (MenuText.Text == "Favorites")
                 MusicManager.GetFavorites(Songs);
@@ -81,8 +89,8 @@ namespace MusicLibrary
             if (MenuText.Text == "Genre")
                 MusicManager.GetAllGenres(Songs);
 
-            if (MenuText.Text == "Recently Played")
-                MusicManager.GetRecently(Songs);
+            if (MenuText.Text == "Recently")
+                GetRecently(Songs);
 
             if (MenuText.Text == "More")
             {
@@ -96,6 +104,7 @@ namespace MusicLibrary
         {
 
             var musicItem = (Music)e.ClickedItem;
+            MusicMedia.Stop();
 
             if (musicItem.Name.ToString() == MusicGenre.HipHop.ToString() ||
                 musicItem.Name.ToString() == MusicGenre.Kpop.ToString() ||
@@ -105,11 +114,21 @@ namespace MusicLibrary
                 MusicManager.GetAllMusicByGenre(Songs, musicItem.Name.ToString());
             }
             MusicMedia.Source = new Uri(this.BaseUri, musicItem.AudioFile);
+
+          /*if( MusicMedia.CurrentState == MediaElementState.Playing) 
+            { 
+             allRecent.Add(new Music(musicItem.Name.ToString(), MusicCategory.Recently));
+            }*/
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+            MenuText.Text = "All Music";
+            BackButton.Visibility = Visibility.Collapsed;
+            MenuitemsListView.SelectedItem = null;
+            MusicMedia.Stop();
+
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -117,12 +136,22 @@ namespace MusicLibrary
             MusicManager.GetAllMusic(Songs);
             MenuText.Text = "All Music";
             BackButton.Visibility = Visibility.Collapsed;
-            MenuitemsListView.SelectedItem = null;  
+            MenuitemsListView.SelectedItem = null;
+            MusicGridView.Visibility = Visibility.Visible;
+            ExtLinksGridView.Visibility = Visibility.Collapsed;
+            MusicMedia.Stop();
 
         }
         private void ExtLinksGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        public  void GetRecently(ObservableCollection<Music> songs)  //Getting Recent - To Do
+        {
+            Songs.Clear();
+           // allRecent.ForEach(song => songs.Add(song));
+            //Recent playlist to be added
         }
     }
 }
