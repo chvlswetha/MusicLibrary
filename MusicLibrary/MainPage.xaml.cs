@@ -63,6 +63,9 @@ namespace MusicLibrary
                 IconFile = "Assets/Icons/More.png",
                 category = MusicCategory.More
             });
+
+            BackButton.Visibility = Visibility.Collapsed;
+
         }
 
         private void MenuitemsListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -87,6 +90,7 @@ namespace MusicLibrary
                 MusicGridView.Visibility = Visibility.Collapsed;
                 ExtLinksGridView.Visibility = Visibility.Visible;
             }
+            BackButton.Visibility = Visibility.Visible;
         }
         private void MusicGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -96,7 +100,7 @@ namespace MusicLibrary
             if (musicItem.Name.ToString() == MusicGenre.HipHop.ToString() ||
                 musicItem.Name.ToString() == MusicGenre.Kpop.ToString() ||
                 musicItem.Name.ToString() == MusicGenre.RnB.ToString() ||
-                    musicItem.Name.ToString() == MusicGenre.RocknRoll.ToString())
+                musicItem.Name.ToString() == MusicGenre.RocknRoll.ToString())
             {
                 MusicManager.GetAllMusicByGenre(Songs, musicItem.Name.ToString());
             }
@@ -112,7 +116,8 @@ namespace MusicLibrary
         {
             MusicManager.GetAllMusic(Songs);
             MenuText.Text = "All Music";
-            MenuitemsListView.SelectedItem = null;
+            BackButton.Visibility = Visibility.Collapsed;
+            MenuitemsListView.SelectedItem = null;  
 
         }
         private void ExtLinksGridView_ItemClick(object sender, ItemClickEventArgs e)
