@@ -87,9 +87,9 @@ namespace MusicLibrary.Model
         public static void GetMoreApps(ObservableCollection<ExtLinks> links)  //Getting External links-Done
         {
             var MoreApps = new List<ExtLinks>();
-            MoreApps.Add(new ExtLinks("pandora"));
-            MoreApps.Add(new ExtLinks("spotify"));
-            MoreApps.Add(new ExtLinks("youtube"));
+            MoreApps.Add(new ExtLinks("Pandora"));
+            MoreApps.Add(new ExtLinks("Spotify"));
+            MoreApps.Add(new ExtLinks("Youtube"));
             links.Clear();
             MoreApps.ForEach(link => links.Add(link));
 
