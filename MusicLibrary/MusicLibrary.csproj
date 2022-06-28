@@ -144,8 +144,6 @@
     <Content Include="Assets\Audio\Genre\RnB\Vibin.wav" />
     <Content Include="Assets\Audio\Genre\RocknRoll\Kinks.wav" />
     <Content Include="Assets\Audio\Genre\RocknRoll\RollingStone.wav" />
-    <Content Include="Assets\Audio\Recently\Better.wav" />
-    <Content Include="Assets\Audio\Recently\IceCream.wav" />
     <Content Include="Assets\Category\HipHop.png" />
     <Content Include="Assets\Category\Kpop.png" />
     <Content Include="Assets\Category\RnB.png" />
@@ -172,8 +170,6 @@
     <Content Include="Assets\Images\More\pandora.png" />
     <Content Include="Assets\Images\More\spotify.png" />
     <Content Include="Assets\Images\More\youtube.png" />
-    <Content Include="Assets\Images\Recently\Better.png" />
-    <Content Include="Assets\Images\Recently\IceCream.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -197,6 +193,10 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Audio\Recently\" />
+    <Folder Include="Assets\Images\Recently\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

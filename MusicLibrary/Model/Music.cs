@@ -36,7 +36,6 @@ namespace MusicLibrary.Model
             if (Category == MusicCategory.Genre)
             {
                 ImageFile = $"/Assets/Images/{Category}/{name}.png";
-                AudioFile = $"/Assets/Audio/{Category}/{name}.wav";
             }
             else
             {
@@ -52,6 +51,15 @@ namespace MusicLibrary.Model
             Genre = genre;
             ImageFile = $"/Assets/Images/{Category}/{genre}/{name}.png";
             AudioFile = $"/Assets/Audio/{Category}/{genre}/{name}.wav";
+
+        }
+
+        public Music(string name,string imagefile, string audiofile)
+        {
+            Name = name;
+            Category = MusicCategory.Recently;
+            ImageFile = imagefile;
+            AudioFile = audiofile;
 
         }
     }

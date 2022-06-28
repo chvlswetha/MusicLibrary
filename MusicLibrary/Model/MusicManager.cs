@@ -63,8 +63,7 @@ namespace MusicLibrary.Model
             filteredsongs.ForEach(song => songs.Add(song));  //LAMBDA statement
 
         }
-             
-     
+        
         //Getting Favorites 
         public static void GetFavorites(ObservableCollection<Music> songs)  //Getting favorites
         {

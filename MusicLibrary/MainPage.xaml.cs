@@ -28,8 +28,9 @@ namespace MusicLibrary
         private List<MenuItem> MenuItems;
         private ObservableCollection<Music> Songs;
         private ObservableCollection<ExtLinks> MoreLinks;
+        private String BackButtonText;
 
-      //  public List<Music> allRecent;
+        public List<Music> allRecent;
         
         public MainPage()
         {
@@ -38,7 +39,7 @@ namespace MusicLibrary
             Songs = new ObservableCollection<Music>();
             MusicManager.GetAllMusic(Songs);
 
-           // allRecent = new List<Music>();
+            allRecent = new List<Music>();
 
             MoreLinks = new ObservableCollection<ExtLinks>();
             MusicManager.GetMoreApps(MoreLinks);
@@ -82,8 +83,7 @@ namespace MusicLibrary
             ExtLinksGridView.Visibility = Visibility.Collapsed;
             MusicMedia.Stop();
 
-
-            if (MenuText.Text == "Favorites")
+            if (MenuText.Text == "Favorites")               
                 MusicManager.GetFavorites(Songs);
 
             if (MenuText.Text == "Genre")
@@ -99,7 +99,8 @@ namespace MusicLibrary
                 ExtLinksGridView.Visibility = Visibility.Visible;
             }
             BackButton.Visibility = Visibility.Visible;
-        }
+            BackButtonText = MenuText.Text;
+         }
         private void MusicGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
 
@@ -111,35 +112,44 @@ namespace MusicLibrary
                 musicItem.Name.ToString() == MusicGenre.RnB.ToString() ||
                 musicItem.Name.ToString() == MusicGenre.RocknRoll.ToString())
             {
+                MenuText.Text = musicItem.Name.ToString();
                 MusicManager.GetAllMusicByGenre(Songs, musicItem.Name.ToString());
             }
             MusicMedia.Source = new Uri(this.BaseUri, musicItem.AudioFile);
 
-          /*if( MusicMedia.CurrentState == MediaElementState.Playing) 
-            { 
-             allRecent.Add(new Music(musicItem.Name.ToString(), MusicCategory.Recently));
-            }*/
-        }
+            //Add the Played Audio File to Recent Playlist Folder
+            if (musicItem.AudioFile != null)
+            {
+                if ((allRecent.Count == 0) || (!(allRecent.Exists(x => x.Name == musicItem.Name))))
+                       allRecent.Add(new Music(musicItem.Name, musicItem.ImageFile, musicItem.AudioFile));
+            }
 
-        private void HomeButton_Click(object sender, RoutedEventArgs e)
+            BackButtonText = MenuText.Text;
+        }
+      private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
             MenuText.Text = "All Music";
-            BackButton.Visibility = Visibility.Collapsed;
-            MenuitemsListView.SelectedItem = null;
-            MusicMedia.Stop();
-
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
             MusicManager.GetAllMusic(Songs);
-            MenuText.Text = "All Music";
             BackButton.Visibility = Visibility.Collapsed;
             MenuitemsListView.SelectedItem = null;
             MusicGridView.Visibility = Visibility.Visible;
             ExtLinksGridView.Visibility = Visibility.Collapsed;
             MusicMedia.Stop();
+            BackButtonText = MenuText.Text;
+
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+           MusicManager.GetAllMusic(Songs);
+            MenuText.Text = "All Music";
+            BackButton.Visibility = Visibility.Collapsed;
+            MenuitemsListView.SelectedItem = null;
+            MusicGridView.Visibility = Visibility.Visible;
+            ExtLinksGridView.Visibility = Visibility.Collapsed;
+            MusicMedia.Stop(); 
 
         }
         private void ExtLinksGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -149,8 +159,8 @@ namespace MusicLibrary
 
         public  void GetRecently(ObservableCollection<Music> songs)  //Getting Recent - To Do
         {
-            Songs.Clear();
-           // allRecent.ForEach(song => songs.Add(song));
+             Songs.Clear();
+             allRecent.ForEach(song => songs.Add(song));
             //Recent playlist to be added
         }
     }
