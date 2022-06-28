@@ -28,9 +28,9 @@ namespace MusicLibrary
         private List<MenuItem> MenuItems;
         private ObservableCollection<Music> Songs;
         private ObservableCollection<ExtLinks> MoreLinks;
-        private String BackButtonText;
-
         public List<Music> allRecent;
+
+        public Stack<String> back;
         
         public MainPage()
         {
@@ -40,6 +40,8 @@ namespace MusicLibrary
             MusicManager.GetAllMusic(Songs);
 
             allRecent = new List<Music>();
+
+            back = new Stack<String>();
 
             MoreLinks = new ObservableCollection<ExtLinks>();
             MusicManager.GetMoreApps(MoreLinks);
@@ -79,27 +81,9 @@ namespace MusicLibrary
         {
             var menuItem = (MenuItem)e.ClickedItem;
             MenuText.Text = menuItem.category.ToString();
-            MusicGridView.Visibility = Visibility.Visible;
-            ExtLinksGridView.Visibility = Visibility.Collapsed;
-            MusicMedia.Stop();
 
-            if (MenuText.Text == "Favorites")               
-                MusicManager.GetFavorites(Songs);
-
-            if (MenuText.Text == "Genre")
-                MusicManager.GetAllGenres(Songs);
-
-            if (MenuText.Text == "Recently")
-                GetRecently(Songs);
-
-            if (MenuText.Text == "More")
-            {
-                MusicManager.GetMoreApps(MoreLinks);
-                MusicGridView.Visibility = Visibility.Collapsed;
-                ExtLinksGridView.Visibility = Visibility.Visible;
-            }
-            BackButton.Visibility = Visibility.Visible;
-            BackButtonText = MenuText.Text;
+            ClickedMenu(MenuText.Text);
+            back.Push(MenuText.Text);
          }
         private void MusicGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -113,6 +97,7 @@ namespace MusicLibrary
                 musicItem.Name.ToString() == MusicGenre.RocknRoll.ToString())
             {
                 MenuText.Text = musicItem.Name.ToString();
+                back.Push(MenuText.Text);
                 MusicManager.GetAllMusicByGenre(Songs, musicItem.Name.ToString());
             }
             MusicMedia.Source = new Uri(this.BaseUri, musicItem.AudioFile);
@@ -124,7 +109,7 @@ namespace MusicLibrary
                        allRecent.Add(new Music(musicItem.Name, musicItem.ImageFile, musicItem.AudioFile));
             }
 
-            BackButtonText = MenuText.Text;
+ 
         }
       private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -136,20 +121,41 @@ namespace MusicLibrary
             MusicGridView.Visibility = Visibility.Visible;
             ExtLinksGridView.Visibility = Visibility.Collapsed;
             MusicMedia.Stop();
-            BackButtonText = MenuText.Text;
+            back.Push(MenuText.Text);
 
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            String backtext;
+            if (back.Count != 0)
+            {
+                  backtext = back.Pop();
+                 if (backtext == MenuText.Text && back.Count != 0)
+                    backtext = back.Pop();
+                ClickedMenu(backtext);
+                    if (Enum.IsDefined(typeof(MusicGenre), backtext))
+                    {
+                        MenuText.Text = backtext;
+                        MusicManager.GetAllMusicByGenre(Songs, backtext);
+                    }
+            }
+            else
+            {
+                MenuText.Text = "All Music";
+                MusicManager.GetAllMusic(Songs);
+                BackButton.Visibility = Visibility.Collapsed;
+            }
+            MenuitemsListView.SelectedItem = null;
 
-           MusicManager.GetAllMusic(Songs);
+
+            /* MusicManager.GetAllMusic(Songs);
             MenuText.Text = "All Music";
             BackButton.Visibility = Visibility.Collapsed;
             MenuitemsListView.SelectedItem = null;
             MusicGridView.Visibility = Visibility.Visible;
             ExtLinksGridView.Visibility = Visibility.Collapsed;
-            MusicMedia.Stop(); 
+            MusicMedia.Stop(); */
 
         }
         private void ExtLinksGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -162,6 +168,31 @@ namespace MusicLibrary
              Songs.Clear();
              allRecent.ForEach(song => songs.Add(song));
             //Recent playlist to be added
+        }
+
+        public void ClickedMenu(string menutext)
+        {
+            MusicGridView.Visibility = Visibility.Visible;
+            ExtLinksGridView.Visibility = Visibility.Collapsed;
+            MusicMedia.Stop();
+
+            MenuText.Text = menutext;
+            if (menutext == "Favorites")
+                MusicManager.GetFavorites(Songs);
+
+            if (menutext == "Genre")
+                MusicManager.GetAllGenres(Songs);
+
+            if (menutext == "Recently")
+                GetRecently(Songs);
+
+            if (menutext == "More")
+            {
+                MusicManager.GetMoreApps(MoreLinks);
+                MusicGridView.Visibility = Visibility.Collapsed;
+                ExtLinksGridView.Visibility = Visibility.Visible;
+            }
+            BackButton.Visibility = Visibility.Visible;
         }
     }
 }
