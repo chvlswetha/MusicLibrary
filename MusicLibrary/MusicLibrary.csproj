@@ -123,6 +123,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ExtLinks.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\Music.cs" />
     <Compile Include="Model\MusicManager.cs" />
@@ -148,6 +149,7 @@
     <Content Include="Assets\Category\Kpop.png" />
     <Content Include="Assets\Category\RnB.png" />
     <Content Include="Assets\Category\RocknRoll.png" />
+<<<<<<< HEAD
     <Content Include="Assets\Images\Favorites\Kinks.png" />
     <Content Include="Assets\Images\Favorites\Makaih.png" />
     <Content Include="Assets\Images\Genre\HipHop.png" />
@@ -160,16 +162,39 @@
     <Content Include="Assets\Images\More\pandora.png" />
     <Content Include="Assets\Images\More\spotify.png" />
     <Content Include="Assets\Images\More\youtube.png" />
+=======
+>>>>>>> 0aa69be3cff6207d4d02715cc98e67c15f5959d6
     <Content Include="Assets\Icons\Favorites.png" />
     <Content Include="Assets\Icons\Genres.png" />
     <Content Include="Assets\Icons\More.png" />
     <Content Include="Assets\Icons\Recently.png" />
+<<<<<<< HEAD
     <Content Include="Assets\Images\Genre\HipHop\Holizna.png" />
     <Content Include="Assets\Images\Genre\HipHop\Makaih.png" />
     <Content Include="Assets\Images\Genre\Kpop\IceCream.png" />
     <Content Include="Assets\Images\Genre\Kpop\YetToCome.png" />
     <Content Include="Assets\Images\Genre\RnB\Better.png" />
     <Content Include="Assets\Images\Genre\RnB\Vibin.png" />
+=======
+    <Content Include="Assets\Images\Favorites\Kinks.png" />
+    <Content Include="Assets\Images\Favorites\Makaih.png" />
+    <Content Include="Assets\Images\Genre\HipHop.png" />
+    <Content Include="Assets\Images\Genre\HipHop\Holizna.png" />
+    <Content Include="Assets\Images\Genre\HipHop\Makaih.png" />
+    <Content Include="Assets\Images\Genre\Kpop.png" />
+    <Content Include="Assets\Images\Genre\Kpop\IceCream.png" />
+    <Content Include="Assets\Images\Genre\Kpop\YetToCome.png" />
+    <Content Include="Assets\Images\Genre\RnB.png" />
+    <Content Include="Assets\Images\Genre\RnB\Better.png" />
+    <Content Include="Assets\Images\Genre\RnB\Vibin.png" />
+    <Content Include="Assets\Images\Genre\RocknRoll.png" />
+    <Content Include="Assets\Images\Genre\RocknRoll\Kinks.png" />
+    <Content Include="Assets\Images\Genre\RocknRoll\RollingStone.png" />
+    <Content Include="Assets\Images\home.png" />
+    <Content Include="Assets\Images\More\pandora.png" />
+    <Content Include="Assets\Images\More\spotify.png" />
+    <Content Include="Assets\Images\More\youtube.png" />
+>>>>>>> 0aa69be3cff6207d4d02715cc98e67c15f5959d6
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

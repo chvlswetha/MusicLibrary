@@ -55,6 +55,7 @@ namespace MusicLibrary.Model
             //where (var sound in allsounds) filter by category
 
             var filteredsongs = allsongs.Where(
+<<<<<<< HEAD
                 song => song.Genre.ToString()==genre).ToList(); //LINQ statement
 
             songs.Clear();
@@ -84,6 +85,34 @@ namespace MusicLibrary.Model
                MoreApps.Add(new ExtLinks("youtube"));
                links.Clear();
                MoreApps.ForEach(link => links.Add(link));           
+=======
+                song => song.Genre.ToString() == genre).ToList(); //LINQ statement
+
+            songs.Clear();
+            /* foreach(var sound in filteredsounds)
+                  sounds.Add(sound);*/
+            filteredsongs.ForEach(song => songs.Add(song));  //LAMBDA statement
+
+        }
+        
+        //Getting Favorites 
+        public static void GetFavorites(ObservableCollection<Music> songs)  //Getting favorites
+        {
+            var allFavorites = new List<Music>();
+            allFavorites.Add(new Music("Kinks", MusicCategory.Favorites));
+            allFavorites.Add(new Music("Makaih", MusicCategory.Favorites));
+            songs.Clear();
+            allFavorites.ForEach(song => songs.Add(song));
+        }
+       public static void GetMoreApps(ObservableCollection<ExtLinks> links)  //Getting External links-Done
+        {
+            var MoreApps = new List<ExtLinks>();
+            MoreApps.Add(new ExtLinks("Pandora"));
+            MoreApps.Add(new ExtLinks("Spotify"));
+            MoreApps.Add(new ExtLinks("Youtube"));
+            links.Clear();
+            MoreApps.ForEach(link => links.Add(link));
+>>>>>>> 0aa69be3cff6207d4d02715cc98e67c15f5959d6
 
         }
 

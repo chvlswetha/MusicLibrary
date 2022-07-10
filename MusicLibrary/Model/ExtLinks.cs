@@ -16,6 +16,10 @@ namespace MusicLibrary.Model
             Name = name;
             ImageFile = $"/Assets/Images/More/{name}.png";
             ExtURL = $"https://www.{name}.com";
+<<<<<<< HEAD
          }
+=======
+        }
+>>>>>>> 0aa69be3cff6207d4d02715cc98e67c15f5959d6
     }
 }

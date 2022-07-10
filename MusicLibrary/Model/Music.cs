@@ -36,6 +36,7 @@ namespace MusicLibrary.Model
         {
             Name = name;
             Category = category;
+<<<<<<< HEAD
              if (Category ==  MusicCategory.Genre)
              ImageFile = $"/Assets/Images/{Category}/{name}.png";
             
@@ -55,5 +56,36 @@ namespace MusicLibrary.Model
                 AudioFile = $"/Assets/Audio/{Category}/{genre}/{name}.wav";
         }
 
+=======
+            if (Category == MusicCategory.Genre)
+            {
+                ImageFile = $"/Assets/Images/{Category}/{name}.png";
+            }
+            else
+            {
+                ImageFile = $"/Assets/Images/{category}/{name}.png";
+                if (Category != MusicCategory.More)
+                    AudioFile = $"/Assets/Audio/{category}/{name}.wav";
+            }
+        }
+        public Music(string name, MusicGenre genre)
+        {
+            Name = name;
+            Category = MusicCategory.Genre;
+            Genre = genre;
+            ImageFile = $"/Assets/Images/{Category}/{genre}/{name}.png";
+            AudioFile = $"/Assets/Audio/{Category}/{genre}/{name}.wav";
+
+        }
+
+        public Music(string name,string imagefile, string audiofile)
+        {
+            Name = name;
+            Category = MusicCategory.Recently;
+            ImageFile = imagefile;
+            AudioFile = audiofile;
+
+        }
+>>>>>>> 0aa69be3cff6207d4d02715cc98e67c15f5959d6
     }
 }
